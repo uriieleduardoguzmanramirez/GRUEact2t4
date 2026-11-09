@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar producto</title>
+    <link rel="stylesheet" th:href="@{/estilos.css}">
+</head>
+<body>
+    <main>
+        <h1>Registrar producto</h1>
+
+        <form th:action="@{/productos/guardar}"
+              th:object="${producto}" method="post">
+
+            <label>Nombre:</label>
+            <input type="text" th:field="*{nombre}" required>
+
+            <label>Categoría:</label>
+            <select th:field="*{categoria}">
+                <option value="Papeleria">Papelería</option>
+                <option value="Tecnologia">Tecnología</option>
+            </select>
+
+            <label>Precio:</label>
+            <input type="number" th:field="*{precio}"
+                   min="0.01" step="0.01" required>
+
+            <button type="submit">Guardar</button>
+        </form>
+
+        <a th:href="@{/productos}">Volver a la lista</a>
+    </main>
+</body>
+</html>
